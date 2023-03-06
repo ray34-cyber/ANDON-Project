@@ -686,6 +686,10 @@ video {
   height: 34vh;
 }
 
+.h-\[350px\] {
+  height: 350px;
+}
+
 .h-\[35vh\] {
   height: 35vh;
 }
@@ -738,28 +742,8 @@ video {
   height: 100vh;
 }
 
-.h-\[263px\] {
-  height: 263px;
-}
-
-.h-\[350px\] {
-  height: 350px;
-}
-
 .max-h-\[30vh\] {
   max-height: 30vh;
-}
-
-.max-h-\[20vh\] {
-  max-height: 20vh;
-}
-
-.min-h-\[40vh\] {
-  min-height: 40vh;
-}
-
-.min-h-\[47vh\] {
-  min-height: 47vh;
 }
 
 .min-h-\[85vh\] {
@@ -786,8 +770,8 @@ video {
   width: 200px;
 }
 
-.w-\[250px\] {
-  width: 250px;
+.w-\[220px\] {
+  width: 220px;
 }
 
 .w-\[300px\] {
@@ -796,6 +780,10 @@ video {
 
 .w-\[350px\] {
   width: 350px;
+}
+
+.w-\[400px\] {
+  width: 400px;
 }
 
 .w-\[500px\] {
@@ -810,10 +798,6 @@ video {
   width: 600px;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-\[700px\] {
   width: 700px;
 }
@@ -822,16 +806,8 @@ video {
   width: 800px;
 }
 
-.w-\[400px\] {
-  width: 400px;
-}
-
-.w-\[240px\] {
-  width: 240px;
-}
-
-.w-\[220px\] {
-  width: 220px;
+.w-full {
+  width: 100%;
 }
 
 .flex-col {
@@ -1012,8 +988,8 @@ video {
   padding: 0.5rem;
 }
 
-.p-20 {
-  padding: 5rem;
+.p-40 {
+  padding: 10rem;
 }
 
 .p-5 {
@@ -1024,12 +1000,8 @@ video {
   padding: 1.5rem;
 }
 
-.p-40 {
-  padding: 10rem;
-}
-
-.p-7 {
-  padding: 1.75rem;
+.p-20 {
+  padding: 5rem;
 }
 
 .px-4 {
@@ -1050,6 +1022,21 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.px-96 {
+  padding-left: 24rem;
+  padding-right: 24rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .pl-0 {
@@ -1080,6 +1067,11 @@ video {
   line-height: 1;
 }
 
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
 .text-9xl {
   font-size: 8rem;
   line-height: 1;
@@ -1089,12 +1081,28 @@ video {
   font-size: 150px;
 }
 
+.text-\[200px\] {
+  font-size: 200px;
+}
+
+.text-\[205px\] {
+  font-size: 205px;
+}
+
 .text-\[230px\] {
   font-size: 230px;
 }
 
 .text-\[260px\] {
   font-size: 260px;
+}
+
+.text-\[270px\] {
+  font-size: 270px;
+}
+
+.text-\[320px\] {
+  font-size: 320px;
 }
 
 .text-lg {
@@ -1110,35 +1118,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-\[270px\] {
-  font-size: 270px;
-}
-
-.text-\[320px\] {
-  font-size: 320px;
-}
-
-.text-\[220px\] {
-  font-size: 220px;
-}
-
-.text-\[210px\] {
-  font-size: 210px;
-}
-
-.text-\[205px\] {
-  font-size: 205px;
-}
-
-.text-\[200px\] {
-  font-size: 200px;
-}
-
-.text-7xl {
-  font-size: 4.5rem;
-  line-height: 1;
 }
 
 .text-8xl {
@@ -1235,10 +1214,5 @@ video {
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
-  }
-
-  .md\:text-9xl {
-    font-size: 8rem;
-    line-height: 1;
   }
 }
