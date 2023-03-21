@@ -1,4 +1,13 @@
+<?php
 
+require 'functions.php';
+$datas = query("SELECT sma_itx_t_data.*, sma_itx_m_line.description AS line_description, sma_itx_m_process.initial AS process_initial, sma_itx_m_call.name AS call_name, sma_itx_m_call.bootstrap_bg AS call_bootstrap_bg, sma_itx_m_status.description AS status_description, sma_itx_t_data.datetime 
+                FROM sma_itx_t_data 
+                INNER JOIN sma_itx_m_line ON sma_itx_t_data.line_id = sma_itx_m_line.id 
+                INNER JOIN sma_itx_m_process ON sma_itx_t_data.process_id = sma_itx_m_process.id 
+                INNER JOIN sma_itx_m_call ON sma_itx_t_data.call_id = sma_itx_m_call.id 
+                INNER JOIN sma_itx_m_status ON sma_itx_t_data.status_id = sma_itx_m_status.id");
+?>
 
 
 <!DOCTYPE html>
@@ -9,11 +18,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Progress</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap-utilities.css">
 </head>
 
 <body>
-  <div  class="bg-black w-full h-auto p-[0.5vw]">
-    <div id="header" class="sticky top-0">
+    <div id="header" class="sticky top-0 left-0">
       <div class="flex justify-around items-center py-[1vh] pr-[1.5vw] pl-[2.5vw] bg-[#222a35] border-b-[0.1vw]">
         <div class="bg-black py-[0.4vh] mr-[2vw] pl-[0.5vw] pr-[6vw] ml-[1vw]">
           <p class="text-[#fafa06] font-bold text-[3vw] font-[arial]">HIJAU</p>
@@ -26,125 +35,23 @@
       </div>
       <div class="flex bg-[#404040] px-[1.5vw] pl-[1.7vw] justify-between">
         <p class="text-white text-[5.5vw] font-bold text-center font-[arial]">PRO.</p>
-        <p class="text-white text-[5.5vw] font-bold text-center font-[arial] -ml-[0.5vw]">M/C</p>
-        <p class="text-white text-[5.5vw] font-bold text-center font-[arial] pl-[2vw] ml-[5vw]">CALL</p>
-        <p class="text-white text-[5.5vw] font-bold text-center font-[arial] ml-[3.5vw] mr-[1vw]">STATE</p>
-        <p class="text-white text-[5.5vw] font-bold text-center font-[arial]">TIME</p>
+        <p class="text-white text-[5.5vw] font-bold text-center font-[arial] -ml-[0.5vw]">LINE</p>
+        <p class="text-white text-[5.5vw] font-bold text-center font-[arial] pl-[2vw] ml-[1vw]">CALL</p>
+        <p class="text-white text-[5.5vw] font-bold text-center font-[arial] ml-[3vw] mr-[1vw]">STATE</p>
+        <p class="text-white text-[5.5vw] font-bold text-center font-[arial] mr-[0.5vw]">TIME</p>
       </div>
     </div>
 
-    <table class="w-full scroll-auto">
-      <tr class="bg-[#00af50]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">1</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Machine</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Call</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:12</td>
+    <table class="w-full">
+      <?php foreach($datas as $data ) : ?>
+      <tr class="bg-<?= $data["call_bootstrap_bg"] ?>">
+        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]"><?= $data["process_initial"] ?></td>
+        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[10.5vw]"><?= $data["line_description"] ?></td>
+        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[9vw]"><?= $data["call_name"] ?></td>
+        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]"><?= $data["status_description"] ?></td>
+        <td id="<?= $data["id"] ?>" class="text-white font-bold text-[5vw] font-[arial] pr-[2vw]"></td>
       </tr>
-      <tr class="bg-[#fe0000]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">2</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Quality</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Arrive</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:10</td>
-      </tr>
-      <tr class="bg-[#0071c1]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">3</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Material</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Arrive</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:02</td>
-      </tr>
-      <tr class="bg-[#01b0f1]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">4</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Mold</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Call</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:10</td>
-      </tr>
-      <tr class="bg-[#ffc000]">
-        <td class="text-black font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">1</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] text-left pl-[11vw]">MGR</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Call</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] pr-[1vw]">0:10</td>
-      </tr>
-      <tr class="bg-[#00af50]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">1</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Machine</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Call</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:12</td>
-      </tr>
-      <tr class="bg-[#fe0000]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">2</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Quality</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Arrive</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:10</td>
-      </tr>
-      <tr class="bg-[#0071c1]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">3</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Material</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Arrive</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:02</td>
-      </tr>
-      <tr class="bg-[#01b0f1]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">4</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Mold</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Call</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:10</td>
-      </tr>
-      <tr class="bg-[#ffc000]">
-        <td class="text-black font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">1</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] text-left pl-[11vw]">MGR</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Call</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] pr-[1vw]">0:10</td>
-      </tr>
-      <tr class="bg-[#00af50]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">1</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Machine</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Call</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:12</td>
-      </tr>
-      <tr class="bg-[#fe0000]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">2</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Quality</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Arrive</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:10</td>
-      </tr>
-      <tr class="bg-[#0071c1]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">3</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Material</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Arrive</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:02</td>
-      </tr>
-      <tr class="bg-[#01b0f1]">
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">4</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[11vw]">Mold</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Call</td>
-        <td class="text-white font-bold text-[5vw] font-[arial] pr-[1vw]">0:10</td>
-      </tr>
-      <tr class="bg-[#ffc000]">
-        <td class="text-black font-bold text-[5vw] font-[arial] text-center pl-[4vw]">IJ</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] text-right pl-[10.5vw]">1</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] text-left pl-[11vw]">MGR</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] text-center pr-[6vw]">Call</td>
-        <td class="text-black font-bold text-[5vw] font-[arial] pr-[1vw]">0:10</td>
-      </tr>
+      <?php endforeach; ?>
     </table>
-  </div>
-  <!-- <script src="progress.js"></script> -->
 </body>
 </html>
-
-
-
-

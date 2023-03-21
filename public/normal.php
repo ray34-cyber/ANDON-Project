@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Normal</title>
-    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="bg-[#0071c1] py-[1vh] w-[100%] h-[7vh] relative">
+    <div class="bg-[#0071c1] w-[100%] h-[7vh] relative flex justify-center items-center">
         <h1 class="text-white text-center text-[2.3vw] font-bold font-[arial]">
           PT.HIJAU MES SYSTEM
         </h1>

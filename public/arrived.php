@@ -27,7 +27,7 @@
             <h1 class="text-[#026fbf] text-[7.1vw] font-bold font-[arial]">IJ</h1>
           </div>
           <div class="bg-black flex justify-center items-center">
-            <h1 class="text-white text-[4.5vw] font-bold font-[arial]">M/C</h1>
+            <h1 class="text-white text-[4.5vw] font-bold font-[arial]">LINE</h1>
           </div>
           <div class="flex justify-center items-center border-b-[0.1vw] border-r-[0.1vw] border-[#616161]">
             <h1 class="text-[#fe0000] text-[7.1vw] font-bold font-[arial]">1</h1>
