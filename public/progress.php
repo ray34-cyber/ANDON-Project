@@ -17,10 +17,7 @@ $datas = query("SELECT sma_itx_t_data.*, sma_itx_m_line.description AS line_desc
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Progress</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/bootstrap-utilities.css">
 </head>
-
 <body>
     <div id="header" class="sticky top-0 left-0">
       <div class="flex justify-around items-center py-[1vh] pr-[1.5vw] pl-[2.5vw] bg-[#222a35] border-b-[0.1vw]">
@@ -44,14 +41,14 @@ $datas = query("SELECT sma_itx_t_data.*, sma_itx_m_line.description AS line_desc
 
     <table class="w-full">
       <?php foreach($datas as $data ) : ?>
-      <tr class="bg-<?= $data["call_bootstrap_bg"] ?>">
+      <tr>
         <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[4vw]"><?= $data["process_initial"] ?></td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[10.5vw]"><?= $data["line_description"] ?></td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[9vw]"><?= $data["call_name"] ?></td>
-        <td class="text-white font-bold text-[5vw] font-[arial] text-center pr-[6vw]"><?= $data["status_description"] ?></td>
-        <td id="<?= $data["id"] ?>" class="text-white font-bold text-[5vw] font-[arial] pr-[2vw]"></td>
+        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[9vw]"><?= $data["line_description"] ?></td>
+        <td class="text-white font-bold text-[5vw] font-[arial] text-left pl-[7vw]"><?= $data["call_name"] ?></td>
+        <td class="text-white font-bold text-[5vw] font-[arial] text-center pl-[2vw]"><?= $data["status_description"] ?></td>
+        <td id="<?= $data["id"] ?>" class="text-white font-bold text-center text-[5vw] font-[arial]"></td>
       </tr>
       <?php endforeach; ?>
     </table>
-</body>
+</body> 
 </html>

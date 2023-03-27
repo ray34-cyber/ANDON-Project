@@ -14,14 +14,5 @@ function query($query) {
     return $datas;
 }
 
-function updateTIme($datetime) {
-    $now = time();
-    $timestamp = strtotime($datetime);
-    $selisih = $now - $timestamp;
-    $menit = floor(($selisih)/60);
-    $detik = $selisih%60;
-    $hasil = $menit . ":" . str_pad($detik, 2 , "0", STR_PAD_LEFT);
-    return $hasil;
-}
 
 ?>
